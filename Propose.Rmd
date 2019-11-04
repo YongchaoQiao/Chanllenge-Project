@@ -1,0 +1,42 @@
+---
+title: "Untitled"
+author: "Yongchao Qiao"
+date: "November 4, 2019"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,message = FALSE)
+```
+
+
+```{r}
+fb = read.csv("temp_datalab_records_social_facebook.csv")
+glimpse(fb)
+fb[1:10]
+```
+
+```{r}
+sort(table(fb$username),decreasing = TRUE)
+```
+
+
+```{r}
+ModelNInc = filter(fb,fb$username == "ModelNInc")
+ModelNInc_ts = ts(ModelNInc$talking_about_count,start = c(2015,01,01),frequency = 365)
+ts.plot(ModelNInc_ts)
+```
+
+
+```{r}
+aflacduck = filter(fb,fb$username == "aflacduck")
+aflacduck_ts = ts(aflacduck$talking_about_count,start = c(2015,01,01),frequency = 365)
+ts.plot(aflacduck_ts)
+```
+```{r}
+RedRobin = filter(fb,fb$username == "RedRobin")
+RedRobin_ts = ts(RedRobin$talking_about_count,start = c(2015,01,01),frequency = 365)
+ts.plot(RedRobin_ts)
+RedRobin
+```
+
